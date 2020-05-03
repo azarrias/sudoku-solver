@@ -74,11 +74,32 @@ def reduce_puzzle(values):
             return False
     return values
 
+def search(values):
+    # Using depth-first search and propagation, create a search tree and solve the sudoku.
+    # First, reduce the puzzle using the previous function
+    values = reduce_puzzle(values)
+    if not values:
+        return False
+    if all(len(values[box]) == 1 for box in boxes):
+        return values
+    
+    # Choose one of the unfilled squares with the fewest possibilities
+    _, s = min((len(values[box]), box) for box in boxes if len(values[box]) > 1)
+
+    # Now use recursion to solve each one of the resulting sudokus, and if one returns a value (not False), return that answer!
+    for value in values[s]:
+        new_values = values.copy()
+        new_values[s] = value
+        result = search(new_values)
+        if result:
+            return result
+
 if __name__ == "__main__":
-    sudoku_grid = '..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..'
+#    sudoku_grid = '..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..'
+    sudoku_grid = '4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......'
     values = grid_values(sudoku_grid) 
     print("* Initial state:\n")
     display(values)
-    values = reduce_puzzle(values)
-    print("\n* Reduced puzzle:\n")
+    values = search(values)
+    print("\n* Solved puzzle:\n")
     display(values)
