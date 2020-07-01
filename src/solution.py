@@ -78,10 +78,10 @@ def search(values):
     # Using depth-first search and propagation, create a search tree and solve the sudoku.
     # First, reduce the puzzle using the previous function
     values = reduce_puzzle(values)
-    if not values:
-        return False
+    if values is False:
+        return False ## Failed earlier
     if all(len(values[box]) == 1 for box in boxes):
-        return values
+        return values ## Solved!
     
     # Choose one of the unfilled squares with the fewest possibilities
     _, s = min((len(values[box]), box) for box in boxes if len(values[box]) > 1)
