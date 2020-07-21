@@ -16,20 +16,6 @@ The sudoku grid to be solved is hard-coded in main:
 sudoku_grid = '4.....8.5.3..........7......2.....6.....8.4......1.......6.3.7.5..2.....1.4......'
 ```
 
-which is a single line string representation in row-major order, i.e.:
-
-Example | sudoku | grid
------ | ----- | -----
-4 . . | . . . | 8 . 5
-. 3 . | . . . | . . .
-. . . | 7 . . | . . .
------ | ----- | -----
-. 2 . | . . . | . 6 .
-. . . | . 8 . | 4 . .
-. . . | . 1 . | . . .
------ | ----- | -----
-. . . | 6 . 3 | . 7 .
-5 . . | 2 . . | . . .
-1 . 4 | . . . | . . .
+which is a single line string representation in row-major order.
 
 So, it is possible to change the value for sudoku_grid, as long as the value represents a valid sudoku grid (otherwise it won't be possible for the agent to solve it).
