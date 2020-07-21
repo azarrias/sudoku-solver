@@ -1,7 +1,7 @@
 # Sudoku solver
 This is an AI agent that solves sudokus, by using Depth-First Search and propagation, iterating with elimination and only choice strategies.
 
-# How to use
+## How to use
 There are no prerequisites, so there is no need for virtual environments, only python3 and git are needed:
 
 ```
